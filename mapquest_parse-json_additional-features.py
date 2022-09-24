@@ -30,14 +30,10 @@ while True:
 
         tripInfo = PrettyTable()
         tripInfo.header = False # no header
-        tripInfo.add_rows(
-            [
-                ["Trip Duration", json_data["route"]["formattedTime"]],
-                ["Miles", str("{:.2f}".format(json_data["route"]["distance"]))],
-                ["Kilometers", str("{:.2f}".format((json_data["route"]["distance"]) * 1.61))],
-                ["Fuel Used (Ltr)", str("{:.2f}".format((json_data["route"][f"fuelUsed"]) * 3.78))]
-            ]
-        )
+        tripInfo.add_row(["Trip Duration", json_data["route"]["formattedTime"]])
+        tripInfo.add_row(["Miles", str("{:.2f}".format(json_data["route"]["distance"]))])
+        tripInfo.add_row(["Kilometers", str("{:.2f}".format((json_data["route"]["distance"]) * 1.61))])
+        tripInfo.add_row(["Fuel Used (Ltr)", str("{:.2f}".format((json_data["route"][f"fuelUsed"]) * 3.78))])
 
         tripInfo.align = "l" # left align
         print(Fore.MAGENTA) # set foreground color to magenta
