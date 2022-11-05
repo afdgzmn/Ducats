@@ -70,7 +70,7 @@ def least_visited():
     for sub in location_lst:
         temp[sub] += 1
     loc = min(temp, key=temp.get)
-    print("Most Visited Location is: " + str(loc))
+    print("Least Visited Location is: " + str(loc))
 
     dup = {}
 
