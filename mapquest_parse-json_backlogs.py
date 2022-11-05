@@ -24,6 +24,9 @@ option = int(input("Enter your option: "))
 location_lst = [] 
 newloc_lst = []
 
+most_visited_lst = []
+least_visited_lst = [] 
+
 '''def removeQ():
     ignore = ['quit','QUIT','Q','q']
     counter = Counter(most_visited_lst)
