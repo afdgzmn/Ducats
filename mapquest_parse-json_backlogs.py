@@ -7,6 +7,7 @@ from os import system
 from collections import defaultdict
 from collections import *
 
+
 system('cls') # clears stdout
 
 def menu():
@@ -21,10 +22,7 @@ menu()
 option = int(input("Enter your option: "))
 
 location_lst = [] 
-newloc_lst = []
-
-most_visited_lst = []
-least_visited_lst = [] 
+newloc_lst = [] 
 
 '''def removeQ():
     ignore = ['quit','QUIT','Q','q']
@@ -55,7 +53,7 @@ def most_visited():
     temp = defaultdict(int)
 
     # determine most visited location
-    for sub in most_visited_lst:
+    for sub in location_lst:
         for word in sub.split():
             temp[word] += 1
     loc = max(temp, key=temp.get)
@@ -63,8 +61,8 @@ def most_visited():
     
     dup = {}
 
-    for x in most_visited_lst:
-        if most_visited_lst.count(x) > 0:
+    for x in location_lst:
+        if location_lst.count(x) > 0:
             dup[x] = dup.get(x, 0)+1
 
     #print("Count of Locations visited more than twice: ", len(dup))
@@ -79,7 +77,7 @@ def least_visited():
     temp = defaultdict(int)
 
     # determine least visited location
-    for sub in least_visited_lst:
+    for sub in location_lst:
         for word in sub.split():
             temp[word] += 1
     loc = max(temp, key=temp.get)
@@ -87,8 +85,8 @@ def least_visited():
     
     dup = {}
 
-    for x in least_visited_lst:
-        if least_visited_lst.count(x) > 0:
+    for x in location_lst:
+        if location_lst.count(x) > 0:
             dup[x] = dup.get(x, 0)-1
 
     #print("Count of Locations visited more than twice: ", len(dup))
@@ -97,7 +95,7 @@ def least_visited():
 
     print("%s%s" % (dup, ' visit/s'))
 
-def location(location_lst, most_visited_lst):
+def location(location_lst):
     main_api = "https://www.mapquestapi.com/directions/v2/route?"
     key = "EbqeMzFFrxwHw0nrQeV4ApcIxfWAfCd4"
         
@@ -105,7 +103,6 @@ def location(location_lst, most_visited_lst):
         print(Fore.YELLOW) # set foreground color to yellow
         orig = input("Starting location: ")
         location_lst.append(orig)
-        most_visited_lst.append(orig)
         if orig.lower() == "quit" or orig.lower() == "q":
             location_lst.pop(-1) #remove q or quit from array list
             print(Style.RESET_ALL) # remove style
@@ -114,9 +111,8 @@ def location(location_lst, most_visited_lst):
 
         dest = input("Destination: ")
         location_lst.append(dest)
-        most_visited_lst.append(dest)
         if dest.lower() == "quit" or dest.lower() == "q":
-            most_visited_lst.pop(-1) #remove q or quit from array list
+            location_lst.pop(-1) #remove q or quit from array list
             print(Style.RESET_ALL) # remove style
             break
 
@@ -179,13 +175,15 @@ while option != 0:
     if option == 1:
         system('cls') # clears stdout
         #Enter location option
+        print('\n')
         print("Option 1: Enter Location")
-        location(location_lst,most_visited_lst)
+        location(location_lst)
         print(Style.RESET_ALL) # remove style
         
     elif option == 2:
         system('cls') # clears stdout
         #View previously inputted locations
+        print('\n')
         print("Option 2: View previously inputted locations")
         prev()
         print(Style.RESET_ALL) # remove style
@@ -194,14 +192,15 @@ while option != 0:
     elif option == 3:
         system('cls') # clears stdout
         #View most visited locations
+        print('\n')
         print("Option 3: View most visited locations")
         most_visited()
-        #removeQ()
         print(Style.RESET_ALL) # remove style
 
     elif option == 4:
         system('cls') # clears stdout
         #View least visited locations
+        print('\n')
         print("Option 4: View least visited locations")
         least_visited()
         print(Style.RESET_ALL) # remove style
