@@ -5,6 +5,7 @@ from prettytable import PrettyTable
 from colorama import Fore, Style
 from os import system 
 from collections import defaultdict
+from collections import *
 
 
 system('cls') # clears stdout
@@ -25,6 +26,13 @@ newloc_lst = []
 
 most_visited_lst = []
 least_visited_lst = [] 
+
+'''def removeQ():
+    ignore = ['quit','QUIT','Q','q']
+    counter = Counter(most_visited_lst)
+    for word in list(counter):
+        if word in ignore:
+            del counter[word]'''
 
 def prev(): 
     print(Fore.YELLOW) # set foreground color to yellow
@@ -60,6 +68,7 @@ def most_visited():
         if most_visited_lst.count(x) > 0:
             dup[x] = dup.get(x, 0)+1
 
+    #print("Count of Locations visited more than twice: ", len(dup))
     print(Style.RESET_ALL)
     print(Fore.WHITE)
 
@@ -67,6 +76,27 @@ def most_visited():
 
 def least_visited():
     print(Fore.CYAN) # set foreground color to green
+
+    temp = defaultdict(int)
+
+    # determine least visited location
+    for sub in least_visited_lst:
+        for word in sub.split():
+            temp[word] += 1
+    loc = max(temp, key=temp.get)
+    print("Least Visited Location is: " + str(loc))
+    
+    dup = {}
+
+    for x in least_visited_lst:
+        if least_visited_lst.count(x) > 0:
+            dup[x] = dup.get(x, 0)-1
+
+    #print("Count of Locations visited more than twice: ", len(dup))
+    print(Style.RESET_ALL)
+    print(Fore.WHITE)
+
+    print("%s%s" % (dup, ' visit/s'))
 
 def location(location_lst, most_visited_lst):
     main_api = "https://www.mapquestapi.com/directions/v2/route?"
@@ -167,6 +197,7 @@ while option != 0:
         #View most visited locations
         print("Option 3: View most visited locations")
         most_visited()
+        #removeQ()
         print(Style.RESET_ALL) # remove style
 
     elif option == 4:
