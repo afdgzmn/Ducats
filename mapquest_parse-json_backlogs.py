@@ -10,7 +10,7 @@ from collections import *
 system('cls') # clears stdout
 
 def menu():
-    print(Fore.RED)
+    print(Fore.RED) # set foreground color to red
     print ("[1] Enter Location")
     print ("[2] View previously inputted locations")
     print ("[3] View most visited locations")
@@ -25,7 +25,6 @@ newloc_lst = []
 
 def prev(): 
     print(Fore.YELLOW) # set foreground color to yellow
-    #location_lst.pop(-1) #remove last item from array list
 
     #removed the duplicates without having to keep track of the elements’ indices
     for location in location_lst: 
@@ -72,7 +71,6 @@ def most_visited():
         else:
             places_string += item
 
-    # loc = min(temp, key=temp.get)
     if len(most_visited_places) > 1:
         print("Most Visited Locations are: " + places_string)
     else:
@@ -90,9 +88,7 @@ def most_visited():
     print("%s%s" % (dup, ' visit/s'))
 
 def least_visited():
-    print(Fore.CYAN) # set foreground color to green
-
-    #print(Fore.GREEN)  # set foreground color to green
+    print(Fore.CYAN) # set foreground color to cyan
 
     temp = defaultdict(int)
 
@@ -102,7 +98,7 @@ def least_visited():
 
     least_visited_places = get_locations(temp, "min")
 
-    #build string
+    # build string
     places_string = ""
     for index, item in enumerate(least_visited_places):
         if index != len(least_visited_places) - 1:
@@ -110,7 +106,6 @@ def least_visited():
         else:
             places_string += item
 
-    #loc = min(temp, key=temp.get)
     if len(least_visited_places) > 1:
         print("Least Visited Locations are: " + places_string)
     else:
