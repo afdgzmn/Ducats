@@ -7,7 +7,6 @@ from os import system
 from collections import defaultdict
 from collections import *
 
-
 system('cls') # clears stdout
 
 def menu():
