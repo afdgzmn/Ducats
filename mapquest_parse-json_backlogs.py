@@ -39,6 +39,20 @@ def prev():
     Total = len(location_lst) #returns length of total inputs from the location_lst
     print("\nSum of the Total Inputs:", Total) #displays the total inputted locations
 
+def get_locations(a, setting):
+    compare = []
+    location_list = []
+    if setting == "min":
+        compare = min(a.items(), key=lambda x: x[1])
+    else:
+        compare = max(a.items(), key=lambda x: x[1])
+
+    for key, value in a.items():
+        if compare[1] == value:
+            location_list.append(key)
+
+    return location_list
+
 def most_visited():
     print(Fore.GREEN) # set foreground color to green
 
@@ -47,8 +61,22 @@ def most_visited():
     # determine most visited location
     for sub in location_lst:
         temp[sub] += 1
-    loc = max(temp, key=temp.get)
-    print("Most Visited Location is: " + str(loc))
+
+    most_visited_places = get_locations(temp, "max")
+
+    # build string
+    places_string = ""
+    for index, item in enumerate(most_visited_places):
+        if index != len(most_visited_places) - 1:
+            places_string += item + ", "
+        else:
+            places_string += item
+
+    # loc = min(temp, key=temp.get)
+    if len(most_visited_places) > 1:
+        print("Most Visited Locations are: " + places_string)
+    else:
+        print("Most Visited Location is: " + places_string)
     
     dup = {}
 
@@ -62,15 +90,31 @@ def most_visited():
     print("%s%s" % (dup, ' visit/s'))
 
 def least_visited():
-    print(Fore.CYAN) # set foreground color to cyan
+    print(Fore.CYAN) # set foreground color to green
+
+    #print(Fore.GREEN)  # set foreground color to green
 
     temp = defaultdict(int)
 
     # determine least visited location
     for sub in location_lst:
         temp[sub] += 1
-    loc = min(temp, key=temp.get)
-    print("Least Visited Location is: " + str(loc))
+
+    least_visited_places = get_locations(temp, "min")
+
+    #build string
+    places_string = ""
+    for index, item in enumerate(least_visited_places):
+        if index != len(least_visited_places) - 1:
+            places_string += item + ", "
+        else:
+            places_string += item
+
+    #loc = min(temp, key=temp.get)
+    if len(least_visited_places) > 1:
+        print("Least Visited Locations are: " + places_string)
+    else:
+        print("Least Visited Location is: " + places_string)
 
     dup = {}
 
