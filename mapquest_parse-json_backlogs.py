@@ -81,9 +81,9 @@ def most_visited(location_lst):
 
 def least_visited(location_lst):
     if (len(location_lst) == 0):
-            print("No locations entered yet")
+        print("No locations entered yet")
     else:
-            print(Fore.GREEN) # set foreground color to green
+        print(Fore.GREEN) # set foreground color to green
 
         temp = defaultdict(int)
 
