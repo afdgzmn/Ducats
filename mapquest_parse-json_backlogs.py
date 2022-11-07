@@ -57,17 +57,17 @@ def most_visited(location_lst):
         for sub in location_lst:
             temp[sub] += 1
 
-        least_visited_places = get_locations(temp, 1)
+        most_visited_places = get_locations(temp, 1)
 
         # build string
         places_string = ""
-        for index, item in enumerate(least_visited_places):
-            if index != len(least_visited_places) - 1:
+        for index, item in enumerate(most_visited_places):
+            if index != len(most_visited_places) - 1:
                 places_string += item + ", "
             else:
                 places_string += item
 
-        if len(least_visited_places) > 1:
+        if len(most_visited_places) > 1:
             print("Most Visited Locations are: " + places_string)
         else:
             print("Most Visited Location is: " + places_string)
@@ -93,17 +93,17 @@ def least_visited(location_lst):
         for sub in location_lst:
             temp[sub] += 1
 
-        most_visited_places = get_locations(temp, 0)
+        least_visited_places = get_locations(temp, 0)
 
         # build string
         places_string = ""
-        for index, item in enumerate(most_visited_places):
-            if index != len(most_visited_places) - 1:
+        for index, item in enumerate(least_visited_places):
+            if index != len(least_visited_places) - 1:
                 places_string += item + ", "
             else:
                 places_string += item
 
-        if len(most_visited_places) > 1:
+        if len(least_visited_places) > 1:
             print("Least Visited Locations are: " + places_string)
         else:
             print("Least Visited Location is: " + places_string)
