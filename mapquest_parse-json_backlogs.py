@@ -104,7 +104,7 @@ def least_visited(location_lst):
         if len(most_visited_places) > 1:
             print("Least Visited Locations are: " + places_string)
         else:
-            print("Most Visited Location is: " + places_string)
+            print("Least Visited Location is: " + places_string)
         
         dup = {}
 
