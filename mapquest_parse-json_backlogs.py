@@ -45,45 +45,11 @@ def get_locations(a, setting):
     return location_list
 
 def most_visited(location_lst):
-    if (len(location_lst) == 0):
-        print("No locations entered yet")
-    else:
-        print(Fore.GREEN) # set foreground color to green
 
-        temp = defaultdict(int)
-
-        # determine most visited location
-        for sub in location_lst:
-            temp[sub] += 1
-
-        most_visited_places = get_locations(temp, 0)
-
-        # build string
-        places_string = ""
-        for index, item in enumerate(most_visited_places):
-            if index != len(most_visited_places) - 1:
-                places_string += item + ", "
-            else:
-                places_string += item
-
-        if len(most_visited_places) > 1:
-            print("Most Visited Locations are: " + places_string)
+        if (len(location_lst) == 0):
+            print("No locations entered yet")
         else:
-            print("Most Visited Location is: " + places_string)
-        
-        dup = {}
-
-        for x in location_lst:
-            if location_lst.count(x) > 0:
-                dup[x] = dup.get(x, 0) + 1
-
-        print("%s%s" % (dup, ' visit/s'))
-
-def least_visited(location_lst):
-    if (len(location_lst) == 0):
-        print("No locations entered yet")
-    else:
-        print(Fore.CYAN) # set foreground color to cyan
+            print(Fore.CYAN) # set foreground color to cyan
 
         temp = defaultdict(int)
 
@@ -102,10 +68,46 @@ def least_visited(location_lst):
                 places_string += item
 
         if len(least_visited_places) > 1:
+            print("Most Visited Locations are: " + places_string)
+        else:
+            print("Most Visited Location is: " + places_string)
+
+        dup = {}
+
+        for x in location_lst:
+            if location_lst.count(x) > 0:
+                dup[x] = dup.get(x, 0) + 1
+
+        print("%s%s" % (dup, ' visit/s'))
+
+def least_visited(location_lst):
+
+        if (len(location_lst) == 0):
+            print("No locations entered yet")
+        else:
+            print(Fore.GREEN) # set foreground color to green
+
+        temp = defaultdict(int)
+
+        # determine most visited location
+        for sub in location_lst:
+            temp[sub] += 1
+
+        most_visited_places = get_locations(temp, 0)
+
+        # build string
+        places_string = ""
+        for index, item in enumerate(most_visited_places):
+            if index != len(most_visited_places) - 1:
+                places_string += item + ", "
+            else:
+                places_string += item
+
+        if len(most_visited_places) > 1:
             print("Least Visited Locations are: " + places_string)
         else:
             print("Least Visited Location is: " + places_string)
-
+        
         dup = {}
 
         for x in location_lst:
